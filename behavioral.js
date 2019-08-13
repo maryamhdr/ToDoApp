@@ -10,3 +10,4 @@ function addItem() {
     listElement.appendChild(element);
     inputField.value = ""
 }
+
