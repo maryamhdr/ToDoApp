@@ -1,7 +1,7 @@
-function addItem() {
+var inputField = document.getElementById("input");
+var listElement = document.getElementById("list");
 
-    var inputField = document.getElementById("input");
-    var listElement = document.getElementById("list");
+function addItem() {
 
     if (!inputField.value) return;
 
