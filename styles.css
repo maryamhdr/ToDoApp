@@ -1,6 +1,8 @@
 :root {
-    --color1: #FFE0CD;
-    --color2: #FFE7EF;
+    --color1: #4B2637;
+    --color2: #7D2941;
+    --color3: #E9E3E3;
+    --color4: #B3A2A2;
 }
 
 html,
@@ -20,7 +22,7 @@ body {
 .header {
     width: 100%;
     height: 26%;
-    background-color: #FFE0CD
+    background-color: var(--color2)
 }
 
 .header-title {
@@ -32,18 +34,19 @@ body {
     font-size: 36px;
     font-weight: bolder;
     padding: 0;
-    margin: 0
+    margin: 0;
+    color: var(--color3)
 }
 
-.input-box {
+.input-wrapper {
     width: 60%;
     height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
-    box-shadow: 2px 2px 10px #666;
-    border-radius: 5px;
+    box-shadow: 0 0 13px -3px rgba(0,0,0,.1);
+    border-radius: 2px;
     position: absolute;
     top: 16%;
     left: 50%;
@@ -52,13 +55,14 @@ body {
     overflow: auto
 }
 
-.input-box label {
-    font-size: 20px;
+.input-wrapper label {
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 16px
+    margin-bottom: 16px;
+    color: var(--color1)
 }
 
-.input-btn-holder {
+.input-box {
     width: 100%;
     display: flex;
     flex-direction: row
@@ -67,24 +71,25 @@ body {
 .input {
     flex-grow: 6;
     background-color: #fff;
-    color: #000;
-    font-size: 20px;
-    border: 2px solid #ccc;
+    color: var(--color1);
+    font-size: 16px;
+    border: 1px solid var(--color4);
     border-radius: 5px;
     padding: 8px;
     outline: none
 }
 
 .input:focus {
-    border: 2px solid #FFE0CD
+    border: 1px solid var(--color2)
 }
 
 .add-btn {
-    flex-grow: 1;
-    background-color: #FFE0CD;
-    color: #000;
-    font-size: 20px;
-    border: none;
+    flex-grow: .5;
+    background-color: transparent;
+    color: var(--color2);
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px solid var(--color2);
     border-radius: 5px;
     outline: none;
     padding: 8px 16px;
@@ -94,47 +99,62 @@ body {
 
 .add-btn:hover {
     cursor: pointer;
-    background-color: rgb(253, 216, 193)
+    background-color: var(--color2);
+    color: var(--color3)
 }
 
 .add-btn:active:focus {
-    box-shadow: 0 0 0 0.2rem rgba(255,231,239,.5);
+    box-shadow: 0 0 0 0.2rem rgba(75,38,55,.5);
 }
 
-.list-container {
-    width: 60%;
-    height: 500px;
+.main-body {
+    width: 80%;
+    min-width: 992px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 5px;
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
-    padding: 32px 40px;
     overflow: auto;
     margin-bottom: 1rem
 }
 
-.todo-heading {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 16px
-}
-
-.list {
+.tabs-wrapper {
     width: 100%;
-    list-style-type: none;
-    font-size: 22px;
-    color: #5d5d5d;
-    padding: 0
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.list li {
-    margin-bottom: 16px
+.tablinks {
+    cursor: pointer;
+    flex: 1 1 33.33%;
+    padding: 16px;
+    outline: none;
+    border: none;
+    margin: 0;
+    background-color: var(--color2);
+    border: 2px solid var(--color2);
+    border-bottom: none;
+    color: var(--color3);
+    font-size: 18px;
+    font-weight: 700;
+    transition: 0.2s
+}
+
+.tablinks:first-child {
+    border-radius: 10px 0 0 0
+}
+
+.tablinks:last-child {
+    border-radius: 0 10px 0 0
+}
+
+.tablinks-active {
+    background-color: #fff !important;
+    color: var(--color2) !important
 }
 
 @media screen and (max-width: 768px) {

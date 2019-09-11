@@ -11,17 +11,22 @@
 <body>
     <div class="header"></div>
     <h1 class="header-title">List Your ToDoes Here!</h1>
-    <div class="input-box">
+    <div class="input-wrapper">
         <label for="input">New ToDo: </label>
-        <div class="input-btn-holder">
+        <div class="input-box">
             <input name="input" id="input" class="input" type="text" placeholder="Write new todo here..." />
             <button class="add-btn" onclick="addItem()">Add</button>
         </div>
     </div>
-    <div class="list-container">
-        <h2 class="todo-heading">ToDo List: </h2>
-        <ul class="list" id="list">
-        </ul>
+    <div class="main-body">
+        <!-- <h2 class="todo-heading">ToDo List: </h2> -->
+        <!-- <ul class="list" id="list">
+        </ul> -->
+        <div class="tabs-wrapper">
+            <button class="tablinks tablinks-active" onclick="changeTab(event, 'all')">All Tasks</button>
+            <button class="tablinks" onclick="changeTab(event, 'progress')">In Progress</button>
+            <button class="tablinks" onclick="changeTab(event, 'completed')">Completed</button>
+        </div>
     </div>
 </body>
 
