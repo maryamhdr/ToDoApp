@@ -120,7 +120,7 @@ body {
     margin-bottom: 1rem
 }
 
-.tabs-wrapper {
+.tab-btn-wrapper {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -158,6 +158,26 @@ body {
 .tablinks-active {
     background: #fff !important;
     color: var(--color2) !important
+}
+
+.tabs-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row
+}
+
+.tab {
+    flex: 1 1;
+    height: 500px;
+    border: 2px solid var(--color2);
+    background-color: #fff;
+    margin: 40px 40px;
+    border-radius: 10px;
+    transition: .3s
+}
+
+.active-tab {
+    background-color: #B3A2A2
 }
 
 @media screen and (max-width: 768px) {

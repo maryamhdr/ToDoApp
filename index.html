@@ -22,10 +22,24 @@
         <!-- <h2 class="todo-heading">ToDo List: </h2> -->
         <!-- <ul class="list" id="list">
         </ul> -->
+        <div class="tab-btn-wrapper">
+            <button class="tablinks tablinks-active" onclick="changeTab(event, 'allTasksTab')">All Tasks</button>
+            <button class="tablinks" onclick="changeTab(event, 'inProgressTab')">In Progress</button>
+            <button class="tablinks" onclick="changeTab(event, 'completedTab')">Completed</button>
+        </div>
+
         <div class="tabs-wrapper">
-            <button class="tablinks tablinks-active" onclick="changeTab(event, 'all')">All Tasks</button>
-            <button class="tablinks" onclick="changeTab(event, 'progress')">In Progress</button>
-            <button class="tablinks" onclick="changeTab(event, 'completed')">Completed</button>
+            <div class="tab active-tab" id="allTasksTab">
+
+            </div>
+
+            <div class="tab" id="inProgressTab">
+                
+            </div>
+
+            <div class="tab" id="completedTab">
+                
+            </div>
         </div>
     </div>
 </body>
