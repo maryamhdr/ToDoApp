@@ -152,7 +152,6 @@ function completeTask() {
 
     var id1 = id.includes("item1_") ? id : id.replace("item2_", "item1_");
     var id2 = id.includes("item1_") ? id.replace("item1_", "item2_") : id;
-    var id3 = id.includes("item1_") ? id.replace("item1_", "item3_") : id.replace("item2_", "item3_");
 
     var element1 = document.getElementById(id1);
     var element2 = document.getElementById(id2);
@@ -172,16 +171,6 @@ function completeTask() {
     }
 
     completedItem++;
-}
-
-function editTask() {
-    var id = this.parentNode.parentNode.getAttribute("id");
-    var input = document.getElementById('modalInput');
-
-    document.getElementById('editModal').style.display= "block";
-    
-    var element = document.getElementById(id);
-    input.value = element.childNodes[0].childNodes[2].textContent;
 }
 
 function deleteTask() {
@@ -216,6 +205,32 @@ function deleteTask() {
 
 }
 
-function submitEdit() {
-    document.getElementById('editModal').style.display = "none";
+
+function editTask() {
+
+    var id = this.parentNode.parentNode.getAttribute("id");
+    var input = document.getElementById('modalInput');
+    var btn = document.getElementById('submitBtn');
+
+    var id1 = id.includes("item1_") ? id : id.replace("item2_", "item1_");
+    var id2 = id.includes("item1_") ? id.replace("item1_", "item2_") : id;
+
+    var element1 = document.getElementById(id1);
+    var element2 = document.getElementById(id2);
+
+    document.getElementById('editModal').style.display= "block";
+    
+    var element = document.getElementById(id);
+    input.value = element.childNodes[0].childNodes[2].textContent;
+
+    btn.addEventListener('click', function(){
+        element1.childNodes[0].childNodes[2].textContent = input.value;
+        element2.childNodes[0].childNodes[2].textContent = input.value;
+        document.getElementById('editModal').style.display = "none";
+    })
+
 }
+
+// function submitEdit() {
+//     document.getElementById('editModal').style.display = "none";
+// }
