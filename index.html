@@ -25,32 +25,32 @@
             <button class="tablinks" onclick="changeTab(event, 'completedTab')">Completed</button>
         </div>
 
-        <div class="tabs-wrapper">
-            <div class="tab active-tab" id="allTasksTab">
-                <ul class="tab-list" id="allTasksList">
-                    <li>Nothing to do.</li>
-                </ul>
-            </div>
 
-            <div class="tab" id="inProgressTab">
-                <ul class="tab-list" id="inProgressList">
-                    <li>Nothing in progress.</li>
-                </ul>
-            </div>
-
-            <div class="tab" id="completedTab">
-                <ul class="tab-list" id="completedList">
-                    <li>Nothing completed.</li>
-                </ul>
-            </div>
+        <div class="tab active-tab" id="allTasksTab">
+            <ul class="tab-list" id="allTasksList">
+                <li class="default-item">Nothing to do.</li>
+            </ul>
         </div>
+
+        <div class="tab" id="inProgressTab" style="display: none">
+            <ul class="tab-list" id="inProgressList">
+                <li class="default-item">Nothing in progress.</li>
+            </ul>
+        </div>
+
+        <div class="tab" id="completedTab" style="display: none">
+            <ul class="tab-list" id="completedList">
+                <li class="default-item">Nothing completed.</li>
+            </ul>
+        </div>
+
     </div>
 
     <div class="modal" id="editModal">
         <div class="input-wrapper">
             <label for="input">Edit Task: </label>
             <div class="input-box">
-                <input name="input" id="modalInput" class="input" type="text"/>
+                <input name="input" id="modalInput" class="input" type="text" />
                 <button class="add-btn" id="submitBtn">Edit</button>
             </div>
         </div>

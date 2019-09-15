@@ -13,7 +13,7 @@ function changeTab(evt, keyMode) {
 
     tabcontent = document.getElementsByClassName("tab");
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].className = tabcontent[i].className.replace(" active-tab", "");
+        tabcontent[i].style.display = "none"
     }
 
     tablinks = document.getElementsByClassName("tablinks");
@@ -21,7 +21,7 @@ function changeTab(evt, keyMode) {
         tablinks[i].className = tablinks[i].className.replace(" tablinks-active", "");
     }
 
-    document.getElementById(keyMode).className += " active-tab";
+    document.getElementById(keyMode).style.display = "block";
     evt.currentTarget.className += " tablinks-active";
 }
 
@@ -167,7 +167,7 @@ function completeTask() {
     completedList.appendChild(newElement);
 
     if (!inProgressList.hasChildNodes()) {
-        inProgressList.innerHTML = "<li>Nothing in progress.</li>";
+        inProgressList.innerHTML = "<li class='default-item'>Nothing in progress.</li>";
     }
 
     completedItem++;
@@ -185,18 +185,18 @@ function deleteTask() {
     element2.parentNode.removeChild(element2);
 
     if (!allTasksList.hasChildNodes()) {
-        allTasksList.innerHTML = "<li>Nothing to do.</li>";
+        allTasksList.innerHTML = "<li class='default-item'>Nothing to do.</li>";
         itemId = 0;
     }
 
     if (!inProgressList.hasChildNodes()) {
-        inProgressList.innerHTML = "<li>Nothing in progress.</li>";
+        inProgressList.innerHTML = "<li class='default-item'>Nothing in progress.</li>";
         itemId = 0;
 
     }
 
     if (!completedList.hasChildNodes()) {
-        completedList.innerHTML = "<li>Nothing completed.</li>";
+        completedList.innerHTML = "<li class='default-item'>Nothing completed.</li>";
         itemId = 0;
         completedItem = 0;
     } else {
@@ -218,12 +218,12 @@ function editTask() {
     var element1 = document.getElementById(id1);
     var element2 = document.getElementById(id2);
 
-    document.getElementById('editModal').style.display= "block";
-    
+    document.getElementById('editModal').style.display = "block";
+
     var element = document.getElementById(id);
     input.value = element.childNodes[0].childNodes[2].textContent;
 
-    btn.addEventListener('click', function(){
+    btn.addEventListener('click', function () {
         element1.childNodes[0].childNodes[2].textContent = input.value;
         element2.childNodes[0].childNodes[2].textContent = input.value;
         document.getElementById('editModal').style.display = "none";
