@@ -175,7 +175,13 @@ function completeTask() {
 }
 
 function editTask() {
+    var id = this.parentNode.parentNode.getAttribute("id");
+    var input = document.getElementById('modalInput');
 
+    document.getElementById('editModal').style.display= "block";
+    
+    var element = document.getElementById(id);
+    input.value = element.childNodes[0].childNodes[2].textContent;
 }
 
 function deleteTask() {
@@ -208,4 +214,8 @@ function deleteTask() {
         completedItem--;
     }
 
+}
+
+function submitEdit() {
+    document.getElementById('editModal').style.display = "none";
 }
