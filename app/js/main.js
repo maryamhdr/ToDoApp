@@ -6,6 +6,7 @@ var inProgressList = document.getElementById('inProgressList');
 var completedList = document.getElementById('completedList');
 
 var itemId = 0;
+var completedItem = 0;
 
 function changeTab(evt, keyMode) {
     var i, tabcontent, tablinks;
@@ -26,12 +27,12 @@ function changeTab(evt, keyMode) {
 
 function addItem() {
 
+    if (!inputField.value) return;
+
     if (itemId === 0) {
         allTasksList.textContent = "";
         inProgressList.textContent = "";
     }
-
-    if(!inputField.value) return;
 
     var id1 = "item1_" + itemId;
     var id2 = "item2_" + itemId;
@@ -90,12 +91,18 @@ function addItem() {
 
 
     completeBtn1.onclick = completeTask;
-    editBtn1.onclick = editeTask;
+    completeBtn1.title = "Completed";
+    editBtn1.onclick = editTask;
+    editBtn1.title = "Edit";
     deleteBtn1.onclick = deleteTask;
+    deleteBtn1.title = "Delete";
 
     completeBtn2.onclick = completeTask;
-    editBtn2.onclick = editeTask;
+    completeBtn2.title = "Completed";
+    editBtn2.onclick = editTask;
+    editBtn2.title = "Edit";
     deleteBtn2.onclick = deleteTask;
+    deleteBtn2.title = "Delete";
 
 
     taskTitleWrapper1.appendChild(itemIcon1);
@@ -135,12 +142,70 @@ function addItem() {
 
 function completeTask() {
 
+    console.log(completedItem)
+
+    if (completedItem === 0) {
+        completedList.textContent = "";
+    }
+
+    var id = this.parentNode.parentNode.getAttribute("id");
+
+    var id1 = id.includes("item1_") ? id : id.replace("item2_", "item1_");
+    var id2 = id.includes("item1_") ? id.replace("item1_", "item2_") : id;
+    var id3 = id.includes("item1_") ? id.replace("item1_", "item3_") : id.replace("item2_", "item3_");
+
+    var element1 = document.getElementById(id1);
+    var element2 = document.getElementById(id2);
+
+    element1.childNodes[0].childNodes[1].style.display = "inline";
+    element1.childNodes[0].childNodes[0].style.display = "none";
+
+    var newElement = element2.parentNode.removeChild(element2);
+
+    newElement.childNodes[0].childNodes[1].style.display = "inline";
+    newElement.childNodes[0].childNodes[0].style.display = "none";
+
+    completedList.appendChild(newElement);
+
+    if (!inProgressList.hasChildNodes()) {
+        inProgressList.innerHTML = "<li>Nothing in progress.</li>";
+    }
+
+    completedItem++;
 }
 
-function editeTask() {
+function editTask() {
 
 }
 
-function deleteTask () {
+function deleteTask() {
+
+    var id1 = this.parentNode.parentNode.getAttribute("id");
+    var id2 = id1.includes("item1_") ? id1.replace("item1_", "item2_") : id1.replace("item2_", "item1_");
+
+    var element1 = document.getElementById(id1);
+    var element2 = document.getElementById(id2);
+
+    element1.parentNode.removeChild(element1);
+    element2.parentNode.removeChild(element2);
+
+    if (!allTasksList.hasChildNodes()) {
+        allTasksList.innerHTML = "<li>Nothing to do.</li>";
+        itemId = 0;
+    }
+
+    if (!inProgressList.hasChildNodes()) {
+        inProgressList.innerHTML = "<li>Nothing in progress.</li>";
+        itemId = 0;
+
+    }
+
+    if (!completedList.hasChildNodes()) {
+        completedList.innerHTML = "<li>Nothing completed.</li>";
+        itemId = 0;
+        completedItem = 0;
+    } else {
+        completedItem--;
+    }
 
 }
